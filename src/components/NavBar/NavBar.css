@@ -1,0 +1,21 @@
+.navBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    background-color: antiquewhite;
+    
+}
+.navBarLinks{
+    display: flex;
+}
+
+.navBarLinks li{
+    list-style: none;
+    text-decoration: none;
+    margin-left: 1rem;
+}
+
+.navItem a{
+    text-decoration: none;
+
+}

@@ -17,6 +17,8 @@ const products =[
     },
     { id:'3',
       name:'Samsung Galaxy A12 New 64GB',
+      description:"celular",
+      price:70000,
       img:'https://tienda.movistar.com.ar/media/catalog/product/cache/1d01ed3f1ecf95fcf479279f9ae509ad/s/a/samsung_galaxy_a12_negro_frente_lifestyle_7_1_1.png',
       category:'Smartphone',
       stock:10

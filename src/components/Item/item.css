@@ -1,5 +1,5 @@
-.card img{
-    width:15rem;
+.card-img-top{
+    width:10rem;
  
 }
 
@@ -8,5 +8,7 @@
 .card{
     text-align: center;
     align-items: center;
-    width:20rem;
+    width:30rem;
+    display:flex;
+    margin: 1rem;
 }

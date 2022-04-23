@@ -1,0 +1,64 @@
+.itemDetailContainer {
+   display: grid;
+   grid-template-areas: "img itemd"
+
+}
+ .itemDetail{
+     display:grid;
+     grid-template-areas: "h5" "pd" "p" "button";
+     justify-items: center
+ }
+
+  .itemDetailContainer .itemDetail{
+      grid-area: itemd;
+  }
+ .itemDetailContainer img {
+     width:20rem;
+     grid-area: img;
+ }
+
+ .itemDetail h5{
+     font-size: 2rem;
+      grid-area: h5;
+ }
+ .itemDetail .description{
+     grid-area: pd;
+
+ }
+
+ .itemDetail .price {
+     grid-area: p;
+ }
+
+ .itemDetail .buttonCount{
+     grid-area: button;
+ }
+
+ .buttonCount{
+     display:grid;
+     justify-items: center;
+     grid-template-areas: "p p" "bd bi" "bc bc" }
+
+ .buttonCount p{
+     grid-area: p;
+     border:1px solid ;
+     padding-left: 1px;
+     padding-right: 1px;
+ }
+
+ .buttonCount .increment{
+     grid-area: bi;
+     width:2rem;
+     margin-bottom: 1rem;
+ }
+
+ .buttonCount .decrement{
+     grid-area:bd;
+     width:2rem;
+     margin-bottom: 1rem;
+ }
+
+ .buttonCount .confirm{
+     grid-area: bc;
+     width:6rem;
+ }
