@@ -1,0 +1,29 @@
+
+ .buttonCount{
+    display:grid;
+    justify-items: center;
+    grid-template-areas: "p p" "bd bi" "bc bc" }
+
+.buttonCount p{
+    grid-area: p;
+    border:1px solid ;
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.buttonCount .increment{
+    grid-area: bi;
+    width:2rem;
+    margin-bottom: 1rem;
+}
+
+.buttonCount .decrement{
+    grid-area:bd;
+    width:2rem;
+    margin-bottom: 1rem;
+}
+
+.buttonCount .confirm{
+    grid-area: bc;
+    width:6rem;
+}

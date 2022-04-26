@@ -2,25 +2,9 @@ import './ItemDetail.css';
 import React,{ useState, useContext } from 'react'
 import {Link} from 'react-router-dom'
 import  CartContext  from '../../context/CartContext';
+import ButtonCount from '../Button/Button';
 
 
-const ButtonCount=({onConfirm,stock,initial=0})=>{
-    const [count,setCount]=useState(initial)
-    const increment=()=>{
-        setCount(count +1)
-    }
-    const decrement=()=>{
-        setCount (count -1)
-    }
-    return (
-        <div className='buttonCount'>
-            <p>{count}</p>
-            <button className='decrement'onClick={decrement}>-</button>
-            <button className='increment' onClick={increment}>+</button>
-            <button className='confirm' onClick={()=>onConfirm(count)}>Add to cart</button>
-        </div>
-    )
-}
 const ItemDetail=({id,name,img,description,price,stock})=>{
     const [quantity,setQuantity]=useState(0)
     
