@@ -1,8 +1,10 @@
 import React ,{ createContext,useState } from "react";
+import { useNotification } from "../notification/Notification";
 
 const CartContext=createContext()
 export const CartContextProvider=({children})=>{
     const [cart, setCart]=useState([])
+    const {setNotification}=useNotification()
 const addItem=(producToAdd)=>{
     setCart([...cart,producToAdd])
 }
@@ -13,18 +15,20 @@ const getQuantity =()=>{
 }
 
 const IsInCart=(id)=>{
-    cart.some(prod=>prod.id===id)
+  return  cart.some(prod=>prod.id===id)
 }
 const ClearCart=()=>{
-    setCart=([])
+    setCart([])
 }
 const removeItem=(id)=>{
+    const p= cart.find(prod=>prod.id===id)
     const prods=cart.filter(prod=>prod.id!==id)
     setCart(prods)
+    setNotification('error', `Se eliminaron ${p.quantity} ${p.name}`)
 }
 
 return (
-    <CartContext.Provider value={{cart,addItem,getQuantity,IsInCart,ClearCart}}>
+    <CartContext.Provider value={{cart,addItem,getQuantity,IsInCart,ClearCart,removeItem}}>
         {children}
     </CartContext.Provider>
 
