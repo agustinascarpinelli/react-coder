@@ -27,8 +27,15 @@ const removeItem=(id)=>{
     setNotification('error', `Se eliminaron ${p.quantity} ${p.name}`)
 }
 
+const getQuantityProd=(id)=>{
+
+  return  cart.find(prod => prod.id === id) ?.quantity
+  
+
+}
+
 return (
-    <CartContext.Provider value={{cart,addItem,getQuantity,IsInCart,ClearCart,removeItem}}>
+    <CartContext.Provider value={{cart,addItem,getQuantity,IsInCart,ClearCart,removeItem,getQuantityProd}}>
         {children}
     </CartContext.Provider>
 
