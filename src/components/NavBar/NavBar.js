@@ -2,15 +2,22 @@ import "./NavBar.css";
 import CartWidget from "../CartWidget/CartWidget";
 import { Link, NavLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { getCategories } from "../asyncmock/asyncmock";
+import { getDocs,collection} from 'firebase/firestore';
+import { firestoreDB } from "../../services/firebase";
 
 const NavBar = () => {
   const [categories, setCategories] = useState([]);
-  useEffect(() => {
-    getCategories().then((categories) => {
-      setCategories(categories);
-    });
-  }, []);
+ useEffect(()=>{
+ getDocs(collection(firestoreDB,'categories')).then(response=>{
+   const categories=response.docs.map(doc=>{
+     return{id:doc.id,...doc.data()}
+
+   })
+   setCategories(categories)
+ })
+}
+
+  , []);
 
   return (
     <nav className="navBar">

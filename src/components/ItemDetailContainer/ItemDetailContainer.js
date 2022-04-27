@@ -1,30 +1,32 @@
 import ItemDetail from "../ItemDetail/ItemDetail";
 import React, { useState, useEffect } from 'react';
-import { getProductsById } from "../asyncmock/asyncmock";
 import {useParams} from 'react-router-dom';
+import { firestoreDB } from "../../services/firebase";
+import {getDoc,doc} from 'firebase/firestore'
 
 const ItemDetailContainer=()=>{
     const [product,setProduct]=useState({})
-    const [loading,setLoading]=useState(true)
+    
     const {productId}=useParams()
 
     useEffect(()=>{
-        getProductsById(productId).then(prod=>{
-            setProduct(prod)
-        }).catch(error => {
-            console.log(error)
-        }).finally(()=>{
-            setLoading(false)
+        getDoc(doc(firestoreDB,'products',productId)).then(response=>{
+            const product={id:response.id,...response.data()}
+            setProduct(product)
         })
-        return (()=>{
+
+        return (() => {
             setProduct()
         })
+        
     },[productId])
 
+
+   
     return(
         <div>
             {
-                loading?<h1>Cargando...</h1>:product?
+               product?
             
         <ItemDetail {...product}/>:
         <h1>El producto no existe</h1>
