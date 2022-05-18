@@ -1,9 +1,10 @@
 import React,{useContext, useEffect, useState}from'react';
 import CartContext from "../../context/CartContext";
-import Form from '../Form/form';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { firestoreDB } from '../../services/firebase';
+import { collection, addDoc, getDocs, where, query,documentId, writeBatch } from "firebase/firestore"
+
 
 
 
@@ -17,35 +18,71 @@ const [adress,setAdress]=useState("")
 const [cell,setCell]=useState("")
 const [error,setError]=useState("")
 const[success,setSuccess]=useState("")
+const [orderId, setOrderId] = useState(null)
 useEffect(()=>{
     if(user){
         setEmail(user.email)
     }
     else {history('/login')}
 })
-const cashout=(e)=>{
-    e.preventDefault();
-    if (user){
-        const date=new Date ();
-        const time =date.getTime();
-        firestoreDB.collection('Buyer-info' + user.uid).doc('_' + time).set({
-            BuyerName:name,
-            BuyerEmail:email,
-            BuyerAdress:adress,
-            BuyerPayment:totalPrice(),
-            BuyerQuantity:getQuantity(),
 
-        }).then (()=>{
-            setCell("");
+const finishOrder=()=>{
+    setCell("");
             setAdress("");
             ClearCart();
             setSuccess('Su compra se ha realizado exitosamente, gracias por confiar en nosotros')
             setTimeout(()=>{
                 history('/')
             },5000)
-        }).catch (error=>setError(error.message))
-    }
 }
+const cashout= async(e)=>{
+    e.preventDefault();
+        const date=new Date ();
+        const time =date.getTime();
+     const order={ BuyerName:name,
+            BuyerEmail:email,
+            BuyerAdress:adress,
+            BuyerPayment:totalPrice(),
+            BuyerQuantity:getQuantity(),
+            date,
+            time ,}
+       const collectionRef= collection(firestoreDB, 'orders')
+        setOrderId(( await addDoc(collectionRef, order)).id)
+        finishOrder(orderId)
+        stock()
+           
+    
+    }
+
+const stock = () =>{
+    const id = cart.map(p => p.id)
+    const batch = writeBatch(firestoreDB);
+    const prodStock = collection(firestoreDB, 'products');
+
+    getDocs(query(prodStock, where(documentId(), 'in', id)))
+        .then(response =>{
+            response.docs.forEach(doc=>{
+                const dataDoc = doc.data()
+                const prod = cart.find(p=> p.id === doc.id)
+                const prodQuantity = prod.quantity
+
+                if(dataDoc.stock >= prodQuantity) {
+                   batch.update(doc.ref, {stock: dataDoc.stock - prodQuantity})
+                   batch.commit()
+                }
+            
+            })
+        }).catch(err =>{
+            console.log(err)
+        })
+
+}
+
+
+
+
+
+
 return(
 
     <>

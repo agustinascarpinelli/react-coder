@@ -1,7 +1,7 @@
 import {Link} from 'react-router-dom'
 import './item.css'
 import React from 'react'
-const Item =({id, name, img,price,cat})=>{
+const Item =({id, name, img,price,cat,stock})=>{
     return(
         <div>
     
@@ -15,6 +15,8 @@ const Item =({id, name, img,price,cat})=>{
     :
     <Link to={`/promo/${id}`} className="btn btn-primary">Ver detalle</Link>
 }
+
+
     </div>
     </div>
     </div>
