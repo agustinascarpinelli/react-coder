@@ -5,8 +5,23 @@ const CartContext=createContext()
 export const CartContextProvider=({children})=>{
     const [cart, setCart]=useState([])
     const {setNotification}=useNotification()
-const addItem=(producToAdd)=>{
-    setCart([...cart,producToAdd])
+const addItem=(productToAdd)=>{
+    if(!IsInCart(productToAdd.id)) {
+        setCart([...cart, productToAdd])
+    } else {
+        const newProducts = cart.map(prod => {
+            if(prod.id === productToAdd.id) {
+                const newProduct = {
+                    ...prod,
+                    quantity: productToAdd.quantity
+                }
+                return newProduct
+            } else {
+                return prod
+            }
+        })
+        setCart(newProducts)
+    }
 }
 const getQuantity =()=>{
     let count =0
@@ -29,10 +44,19 @@ const removeItem=(id)=>{
 
 const getQuantityProd=(id)=>{
 
-  return  cart.find(prod => prod.id === id) ?.quantity
+    const item=cart.find(prod=>prod.id===id)
+    if (item){
+       console.log (item)
+        const p= item.quantity
+        console.log (p)
+        return p;
   
-
-}
+      
+    }else{return 1}
+    
+  
+  }
+  
 
 return (
     <CartContext.Provider value={{cart,addItem,getQuantity,IsInCart,ClearCart,removeItem,getQuantityProd}}>

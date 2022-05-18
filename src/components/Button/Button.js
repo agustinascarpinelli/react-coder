@@ -1,7 +1,10 @@
-import React ,{ useState } from "react"
+import React ,{ useEffect, useState } from "react"
 import './Button.css';
-const ButtonCount=({onConfirm,initial,stock})=>{
+const ButtonCount=({onConfirm,initial=1,stock=0})=>{
     const [count,setCount]=useState(initial)
+    useEffect(()=>{
+        setCount(initial)
+    },[initial])
     const increment=()=>{
         if (count<stock){
         setCount(count +1)

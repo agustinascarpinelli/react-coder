@@ -2,7 +2,9 @@ import './CartWidget.css'
 import React from 'react';
 import { useContext } from 'react';
 import CartContext from '../../context/CartContext';
+import { cart } from 'react-icons-kit/entypo/cart';
 import { Link } from 'react-router-dom';
+import {Icon} from 'react-icons-kit'
 
 
 const CartWidget=()=>{
@@ -14,7 +16,7 @@ const CartWidget=()=>{
 
     return(
         <Link to='/cart'>
-            <img src="\images\cart.png" alt="cart" className="cart-image"/>
+            <Icon icon={cart}></Icon>
             {count}
             </Link>
     );
