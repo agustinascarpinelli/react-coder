@@ -56,10 +56,16 @@ const getQuantityProd=(id)=>{
     
   
   }
+
+const totalPrice=()=>{
+    let count =0
+    cart.forEach(prod=>{count=count+=prod.quantity*prod.price})
+    return count
+}
   
 
 return (
-    <CartContext.Provider value={{cart,addItem,getQuantity,IsInCart,ClearCart,removeItem,getQuantityProd}}>
+    <CartContext.Provider value={{cart,addItem,getQuantity,IsInCart,ClearCart,removeItem,getQuantityProd,totalPrice}}>
         {children}
     </CartContext.Provider>
 

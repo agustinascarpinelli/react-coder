@@ -21,7 +21,7 @@ const Cart =() =>{
 
         </ul>
         <button onClick={()=>ClearCart()}>Vaciar carrito</button>
-        <Link to="/order">Finalizar compra</Link>
+        <Link to="/cashout">Finalizar compra</Link>
         
      
         </>

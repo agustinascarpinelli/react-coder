@@ -5,7 +5,7 @@ import  CartContext  from '../../context/CartContext';
 import ButtonCount from '../Button/Button';
 import { useNotification } from '../../notification/Notification';
 
-const ItemDetail=({id,name,img,description,price,stock})=>{
+const ItemDetail=({id,name,img,description,price,stock,variety,weight})=>{
     
     const {addItem, IsInCart,getQuantityProd}=useContext(CartContext)
     const {setNotification}=useNotification()
@@ -21,6 +21,8 @@ const ItemDetail=({id,name,img,description,price,stock})=>{
         <div className='itemDetail'>
         <h5 >{name}</h5>
         <p className='description'>{description}</p>
+        <p className='variety'>Variedad: {variety}</p>
+        <p className='weight'>Peso: {weight}</p>
         <p className='price'>$ {price}</p>
         <div>
         {false? <Link to='/cart' className='Option'>Cart</Link>:<ButtonCount onConfirm={handleAdd} stock={stock} initial={getQuantityProd(id)} />}
