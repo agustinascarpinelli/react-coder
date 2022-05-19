@@ -1,0 +1,15 @@
+.orderDet{
+    background-color: #A58B6E;
+    margin:2rem,auto;
+}
+
+.orderDet h1{
+    text-align: center;
+    color: #F0EEEB;
+    font-size: 2rem;
+}
+
+.msgSuc{
+    background-color: #A58B6E;
+    text-align: center;
+}

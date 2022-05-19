@@ -1,24 +1,54 @@
-.navBar{
+.nav{
+    width:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F0EEEB;
+}
+
+.nav img{
+    width:8rem;
+    height:auto;
+}
+
+.navLink{
+    text-decoration: none;
+    color:#815C32;
+    padding: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.navLink:hover{
+    color:black;
+}
+
+ .rightSide{
+display:flex;
+flex-direction: column;
+align-items: center;
+margin-right: 3rem;
+   
+
+}
+
+.userName{
+    font-size: 0.8rem;
+    color:#815C32;
+   
+}
+
+.logout{
+  
+    font-size: 0.6rem;
+    background-color: #A58B6E;
+    border: none;
+    border-radius: 0.1rem;
+    color:#F0EEEB;
+}
+
+.righSideIn{
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    background-color: antiquewhite;
+    align-items: center;
     
 }
-.navBarLinks{
-    display: flex;
-}
 
-.navBarLinks li{
-    list-style: none;
-    text-decoration: none;
-    margin-left: 1rem;
-}
-
-.navItem a{
-    text-decoration: none;
-
-}
-.nav img{
-  width: 10rem;
-}

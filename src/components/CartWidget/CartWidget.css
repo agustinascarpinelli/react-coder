@@ -1,3 +1,32 @@
-.cart-image{
-    width:10px;
+.cartIcon{
+    color:#815C32;
+ 
+  
+}
+i.cartIcon {
+    font-size: 1rem;
+}
+
+.navCart .cartCounter{
+    color:#815C32;
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    font-weight: bold;
+
+}
+
+
+
+.navCart{
+    text-decoration: none;
+    color:#815C32;
+    display: flex;
+    align-items: flex-start;
+    height:1.5rem;
+
+}
+
+.navCart:hover{
+    color:black;
 }

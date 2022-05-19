@@ -1,6 +1,26 @@
-.first-title{
-    color: #828282;
-    font-size: 50px;
-    font-weight: bold;
-    text-align: center;
+.itemListC{
+    display: grid;  
+    grid-template-areas:"t" "p" ;
+
+}
+
+.itemListContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;  
+  flex-wrap: nowrap;
+  grid-area: p;
+  margin-right: 0;
+  
+}
+
+.cat{
+  grid-area: t;
+  position: fixed;
+  display:grid;
+  align-items: stretch;
+
+
+
 }

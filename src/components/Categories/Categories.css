@@ -1,0 +1,41 @@
+.filter-box {
+  display: flex;
+  flex-direction: column;
+  height:100vh;
+  padding-left: 15px;
+ 
+ background-color: #F0EEEB;
+ padding-right: 1rem;
+ padding-bottom: 1rem;
+height: 100%;
+
+
+}
+
+.filter-box h6 {
+  color: #604525;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-top: 1rem;
+  text-decoration: underline;
+}
+
+.filter-box span {
+  cursor: pointer;
+}
+
+.filter-box span:hover {
+  color: black;
+}
+
+.filter-box a {
+  text-decoration: none;
+  color: #604525;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+.filter-box a:hover {
+  color: black;
+}

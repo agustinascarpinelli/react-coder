@@ -28,7 +28,7 @@ const ItemDetailContainer=()=>{
             {
                product?
             
-        <ItemDetail {...product}/>:
+        <ItemDetail cat='detail' {...product}/>:
         <h1>El producto no existe</h1>
             }
         </div>

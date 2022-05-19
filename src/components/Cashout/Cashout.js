@@ -4,6 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { firestoreDB } from '../../services/firebase';
 import { collection, addDoc, getDocs, where, query,documentId, writeBatch } from "firebase/firestore"
+import './Cashout.css'
 
 
 
@@ -33,7 +34,7 @@ const finishOrder=()=>{
             setSuccess('Su compra se ha realizado exitosamente, gracias por confiar en nosotros')
             setTimeout(()=>{
                 history('/')
-            },5000)
+            },8000)
 }
 const cashout= async(e)=>{
     e.preventDefault();
@@ -86,26 +87,30 @@ const stock = () =>{
 return(
 
     <>
-    {success && <span>{success}</span>}
-    <div>
+    {success ? <div className='msgSuc'><span class="successMsg">{success}</span></div>:
+    <div class="orderDet">
     <h1>Detalles de la compra</h1>
-    <ul>{ cart.map(p=><li key={p.id}>{p.name} Cantidad:{p.quantity}precio uni: {p.price}  subtotal: {p.quantity * p.price} </li>)}
+    <ul>{ cart.map(p=><li key={p.id}>{p.name} Cantidad: {p.quantity}<br></br>Precio uni: ${p.price}<br></br>Subtotal: {p.quantity * p.price} </li>)}
 
 </ul>
-        <p>El total de la compra es:{getQuantity()}</p>
-    </div>
+        <p>El total de la compra es: $ {totalPrice()}</p>
+    </div>}
+    <div className='containerForm'>
     <form autoComplete='off' className='form-group' onSubmit={cashout}>
-        <label htmlFor='name'>Name</label>
+        <label htmlFor='name'>Nombre: </label>
         <input type="text" className='form-control' required  onChange={(e)=>setName(e.target.value)} value={name}/>
-        <label htmlFor='email'>Email</label>
+        <label htmlFor='email'>Email: </label>
         <input type="email" className='form-control' required value={email} disabled/>
-        <label htmlFor='Cell'>Numero de telefono:</label>
+        <label htmlFor='Cell'>Numero de telefono: </label>
         <input type="number" className='form-control' required  onChange={(e)=>setCell(e.target.value)} value={cell}/>
-        <label htmlFor='adress'>Direccion</label>
+        <label htmlFor='adress'>Direccion: </label>
         <input type="text" className='form-control' required  onChange={(e)=>setAdress(e.target.value)} value={adress}/>
-        <button type="submit">Finalizar compra</button>
+        <div className='buttonsConfirm'>
+        <button  className="btnConf" type="submit">Finalizar compra</button>
+        </div>
     </form>
-    {error&&<spam>{error}</spam>}
+    </div>
+    {error&&<spam className="errorMsg">{error}</spam>}
    
     
     </>

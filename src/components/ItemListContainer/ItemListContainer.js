@@ -96,14 +96,19 @@ const returntoAllProducts=()=>{
 
    
 if(products.length === 0) {
-    return <h1>Cargando productos...</h1>
+    return <div className='loading'><h1 className='loadingProd'>Cargando productos...</h1></div> 
     }
         return(
-            <div>
+            <div className='itemListC'>
+                <div className='cat'>
+                    <div className='cat2'>
             <Categories handleOrigin={handleOrigin} handlePresentation={handlePresentation} handlePrice={handlePrice}></Categories>
-            <a href="javascript:void(0)" onClick={returntoAllProducts}>Volver a todos los productos</a>
-            <div>
+            </div>
+            </div>
+            <div className='itemListContainer'>
+               
             <ItemList cat='detail' products={products}/>
+          
             </div>
             </div>
         )

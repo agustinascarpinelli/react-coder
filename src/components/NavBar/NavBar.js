@@ -3,8 +3,8 @@ import CartWidget from "../CartWidget/CartWidget";
 import { Link, NavLink } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
-
-
+import {iosContactOutline} from 'react-icons-kit/ionicons/iosContactOutline'
+import {Icon} from 'react-icons-kit'
 const NavBar = () => {
   const { logout, user } = useAuth();
   const handleLogout = async () => {
@@ -15,24 +15,56 @@ const NavBar = () => {
     }
   };
 
-  
-  return(
-    <div className='nav'>
-        <div className='leftSide'>
-            <img src={'./images/aroma.png'}/>
-        </div>
-        <span><Link to='/list' className='navLink'>Nuestos Productos</Link></span>
-            <span><Link to='/promo/' className='navLink'>Promociones</Link></span>
-            <span><CartWidget></CartWidget></span>
-      {user && <div><span><p>{user.email}</p></span>
-             <span><button onClick={handleLogout}>Cerrar sesion</button></span></div>}
-      {!user&& <div>
-            <span><Link to='signup' className='navLink'>Registrarse</Link></span>
-            <span><Link to="login" className='navLink'>Ingresar</Link></span></div>
-         
-      }
+  return (
+    <div className="nav">
+      <div>
+        <Link to="/">
+          <img src={"./images/aroma.png"} />
+        </Link>
+      </div>
+      <div className="center">
+        <span>
+          <Link to="/list" className="navLink">
+            Nuestros productos
+          </Link>
+        </span>
+        <span>
+          <Link to="/promo/" className="navLink">
+            Promociones
+          </Link>
+        </span>
+      </div>
 
-      
+      {user && (
+        <div className="rightSide">
+          <span>
+            <p className="userName"><Icon icon={iosContactOutline}></Icon> {user.email}</p>
+          </span>
+          <span>
+            <button className="logout" onClick={handleLogout}>
+              Cerrar sesion
+            </button>
+          </span>
+        </div>
+      )}
+      {!user && (
+        <div className="rightSideIn">
+          <span>
+            <Link to="signup" className="navLink">
+              Registrarse
+            </Link>
+          </span>
+          <span>
+            <Link to="login" className="navLink">
+              Ingresar
+            </Link>
+          </span>
+        </div>
+      )}
+      <span>
+        <CartWidget></CartWidget>
+      </span>
     </div>
-)}
+  );
+};
 export default NavBar;

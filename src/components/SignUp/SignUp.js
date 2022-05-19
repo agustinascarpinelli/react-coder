@@ -30,7 +30,7 @@ export const Signup=()=>{
           }
         };
     return (
-        <div className='signup-container'>
+        <div className='containerForm'>
             <h1>Completa tus datos</h1>
  
             <form className='form-group' autoComplete='off' onSubmit={signUp}>
@@ -38,10 +38,12 @@ export const Signup=()=>{
                 <input type="text" className='form-control' required onChange={(e)=>setUser({...user, email:e.target.value})}/>
                 <label>Contraseña: </label>
                 <input type="password" className='form-control' required onChange={(e) => setUser({ ...user, password: e.target.value })} />
-                <button type='submit' className='btn-signup'>Registrarme</button>
-                <span>Ya estas registrado? <Link to="login">Ingresa a tu cuenta</Link></span>
+                <div className='buttonsConfirm'>
+                <button type='submit' className='btnConf'>Registrarme</button>
+                <span className='redirect'>Ya estas registrado? <Link to="/login">Ingresa a tu cuenta</Link></span>
+                </div>
             </form>
-            {error && <div className='error-signup'>{error}</div>}
+            {error && <div className='errorMsg'>{error}</div>}
         </div>
     )
 
