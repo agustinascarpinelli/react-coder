@@ -22,7 +22,7 @@ const NavBar = () => {
           <img src={"./images/aroma.png"} />
         </Link>
       </div>
-      <div className="center">
+      
         <span>
           <Link to="/list" className="navLink">
             Nuestros productos
@@ -33,7 +33,7 @@ const NavBar = () => {
             Promociones
           </Link>
         </span>
-      </div>
+    
 
       {user && (
         <div className="rightSide">

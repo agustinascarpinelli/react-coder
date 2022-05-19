@@ -14,7 +14,7 @@ const ItemDetail = ({
   weight,
   price,
   stock,
-  cat
+  cat,
 }) => {
   const { addItem, IsInCart, getQuantityProd } = useContext(CartContext);
   const { setNotification } = useNotification();
@@ -30,9 +30,12 @@ const ItemDetail = ({
       <div className="itemDetail">
         <h5>{name}</h5>
         <p className="description">{description}</p>
-        {cat==='detail'&&<>
-        <p className="variety">Variedad: {variety}</p>
-        <p className="weight">Peso: {weight} gr</p></>}
+        {cat === "detail" && (
+          <>
+            <p className="variety">Variedad: {variety}</p>
+            <p className="weight">Peso: {weight} gr</p>
+          </>
+        )}
         <p className="price">$ {price}</p>
         <div>
           {false ? (

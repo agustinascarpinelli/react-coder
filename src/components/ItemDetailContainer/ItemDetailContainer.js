@@ -1,37 +1,33 @@
 import ItemDetail from "../ItemDetail/ItemDetail";
-import React, { useState, useEffect } from 'react';
-import {useParams} from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { firestoreDB } from "../../services/firebase";
-import {getDoc,doc} from 'firebase/firestore'
+import { getDoc, doc } from "firebase/firestore";
 
-const ItemDetailContainer=()=>{
-    const [product,setProduct]=useState({})
-    
-    const {productId}=useParams()
+const ItemDetailContainer = () => {
+  const [product, setProduct] = useState({});
 
-    useEffect(()=>{
-        getDoc(doc(firestoreDB,'products',productId)).then(response=>{
-            const product={id:response.id,...response.data()}
-            setProduct(product)
-        })
+  const { productId } = useParams();
 
-        return (() => {
-            setProduct()
-        })
-        
-    },[productId])
+  useEffect(() => {
+    getDoc(doc(firestoreDB, "products", productId)).then((response) => {
+      const product = { id: response.id, ...response.data() };
+      setProduct(product);
+    });
 
+    return () => {
+      setProduct();
+    };
+  }, [productId]);
 
-   
-    return(
-        <div>
-            {
-               product?
-            
-        <ItemDetail cat='detail' {...product}/>:
+  return (
+    <div>
+      {product ? (
+        <ItemDetail cat="detail" {...product} />
+      ) : (
         <h1>El producto no existe</h1>
-            }
-        </div>
-    )
-}
+      )}
+    </div>
+  );
+};
 export default ItemDetailContainer;

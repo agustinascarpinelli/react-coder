@@ -1,46 +1,49 @@
 .inicio {
-  height: 100vh;
-    background-size:cover;
-    background-position: center center;
-    position: relative;
-    margin-bottom: 2rem;
-    background-image: url(https://cafe.esp.br/wp-content/uploads/2020/06/Loja-de-Caf%C3%A9-especial.jpg); 
-    
+  margin: 3rem;
+  height: 500px;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  margin-bottom: 2rem;
+  background-image: url(https://cafe.esp.br/wp-content/uploads/2020/06/Loja-de-Caf%C3%A9-especial.jpg);
 }
 
-    .contenido-inicio {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background-color: rgba(0, 0, 0, 0.5);
-     
-    }
+.contenido-inicio {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
 
+.contenido-inicio h1 {
+  color: #c1b19d;
+  font-weight: bold;
+  font-size: 5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+}
 
-        .contenido-inicio h1{
-            color:#C1B19D;
-            font-weight: bold;
-            font-size: 5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5rem;
-        }
+.contenido-inicio p {
+  color: #c1b19d;
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+}
 
-        .contenido-inicio p{
-            color:#C1B19D;
-            font-size: 2rem;
-            letter-spacing: 0.2rem;
-        }
-
-        a.buttonLink{
-            text-decoration: none;
-            color:#75542D;
-            background-color: #C1B19D;
-            border-radius: 0.2rem;
-            padding:0.2rem;
-            letter-spacing: 0.1rem;
-
-        }
+a.buttonLink {
+  text-decoration: none;
+  color: #75542d;
+  background-color: #c1b19d;
+  border-radius: 0.2rem;
+  padding: 0.2rem;
+  letter-spacing: 0.1rem;
+}
+@media (max-width: 420px) {
+  .contenido-inicio h1 {
+    font-size: 2.2rem;
+  }
+}

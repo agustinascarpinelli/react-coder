@@ -1,26 +1,32 @@
-.itemListC{
-    display: grid;  
-    grid-template-areas:"t" "p" ;
-
+.itemListC {
+  display: grid;
+  grid-template-areas: "t" "p";
 }
 
-.itemListContainer{
+.itemListContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   flex-wrap: nowrap;
   grid-area: p;
   margin-right: 0;
-  
 }
 
-.cat{
+.cat {
   grid-area: t;
   position: fixed;
-  display:grid;
+  display: grid;
   align-items: stretch;
+  top: 95px;
+}
 
-
-
+@media (max-width: 420px) {
+  .cat {
+    position: inherit;
+    justify-items: center;
+  }
+  .itemListC {
+    justify-content: center;
+  }
 }

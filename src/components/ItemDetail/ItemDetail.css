@@ -48,10 +48,21 @@
   grid-area: p;
   color: black;
   font-weight: bold;
-  margin:2rem;
- 
+  margin: 2rem;
 }
 
 .itemDetail .buttonCount {
   grid-area: button;
+}
+
+@media (max-width: 420px) {
+  .itemDetailContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .itemDetailContainer img {
+    width: 10rem;
+  }
 }

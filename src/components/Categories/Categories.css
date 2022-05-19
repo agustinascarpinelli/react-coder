@@ -1,9 +1,7 @@
 .filter-box {
   display: flex;
   flex-direction: column;
-  height:100vh;
   padding-left: 15px;
- 
  background-color: #F0EEEB;
  padding-right: 1rem;
  padding-bottom: 1rem;
@@ -38,4 +36,14 @@ height: 100%;
 
 .filter-box a:hover {
   color: black;
+}
+
+@media (max-width: 420px){
+  .filter-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    margin-top: 0;
+  }
 }
