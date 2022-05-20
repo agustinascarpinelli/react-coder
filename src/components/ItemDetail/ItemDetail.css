@@ -66,3 +66,15 @@
     width: 10rem;
   }
 }
+
+.back{
+  text-decoration: none;
+  color:#4f391f;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  text-transform: uppercase;
+}
+
+.back:hover{
+  color:black;
+}

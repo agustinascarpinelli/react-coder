@@ -1,0 +1,28 @@
+.loader__div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: #44444411;
+    z-index: 2;
+    }
+    
+    .loader{
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    border: 0.5rem solid #4444;
+    border-left-color: #fff;
+    animation: spin 1s ease infinite;
+    z-index: 1;
+    }
+    
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    }

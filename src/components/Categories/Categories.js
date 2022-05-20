@@ -28,6 +28,7 @@ const Categories = ({
 
   return (
     <div className="filter-box">
+   
       <h6>Origen</h6>
       {origin.map((prod, index) => {
         return (
@@ -60,6 +61,7 @@ const Categories = ({
         Volver a todos los productos
       </a>
     </div>
+ 
   );
 };
 export default Categories;

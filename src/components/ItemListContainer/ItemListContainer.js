@@ -4,9 +4,11 @@ import React, { useState, useEffect } from "react";
 import { firestoreDB } from "../../services/firebase";
 import { getDocs, collection, query, where } from "firebase/firestore";
 import Categories from "../Categories/Categories";
+import Loader from "../Loader/Loader";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
+  const [loading,setLoading]=useState(true);
 
   useEffect(() => {
     const collectionRef = collection(firestoreDB, "products");
@@ -16,6 +18,7 @@ const ItemListContainer = () => {
         return { id: doc.id, ...doc.data() };
       });
       setProducts(products);
+      setLoading(false)
     });
   }, []);
   const [originId, setOriginId] = useState("");
@@ -92,11 +95,9 @@ const ItemListContainer = () => {
     });
   };
 
-  if (products.length === 0) {
+  if (loading) {
     return (
-      <div className="loading">
-        <h1 className="loadingProd">Cargando productos...</h1>
-      </div>
+     <Loader></Loader>
     );
   }
   return (
@@ -106,6 +107,7 @@ const ItemListContainer = () => {
           handleOrigin={handleOrigin}
           handlePresentation={handlePresentation}
           handlePrice={handlePrice}
+          returntoAllProducts={returntoAllProducts}
         ></Categories>
       </div>
       <div className="itemListContainer">

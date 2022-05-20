@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { firestoreDB } from "../../services/firebase";
 import { getDocs, collection } from "firebase/firestore";
 import ItemList from "../ItemList/ItemList";
+import Loader from "../Loader/Loader";
 export const ItemPromoContainer = () => {
   const [products, setProducts] = useState([]);
+  const[loading, setLoading]=useState(true)
 
   useEffect(() => {
     const collectionRef = collection(firestoreDB, "promo");
@@ -13,12 +15,12 @@ export const ItemPromoContainer = () => {
         return { id: doc.id, ...doc.data() };
       });
       setProducts(products);
+      setLoading(false)
     });
   }, []);
 
-  if (products.length === 0) {
-    return <div className="loading"><h1 className="loadingProd">Cargando productos...</h1></div>;
-  }
+  if (loading) {
+    return( <Loader></Loader>)}
   return (
     <div>
       <ItemList cat="promo" products={products} />

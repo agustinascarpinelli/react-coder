@@ -1,5 +1,5 @@
 import "./ItemDetail.css";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import CartContext from "../../context/CartContext";
 import ButtonCount from "../Button/Button";
@@ -17,12 +17,14 @@ const ItemDetail = ({
   cat,
 }) => {
   const { addItem, IsInCart, getQuantityProd } = useContext(CartContext);
+  const [added, setAdded]=useState(false)
   const { setNotification } = useNotification();
 
   const handleAdd = (count) => {
     const prodObj = { id, name, price, quantity: count };
     addItem(prodObj);
-    setNotification("success", `Se agregaron ${count} ${name} correctamente`);
+    setNotification("success", `Se agregaron ${count} ${name} correctamente`)
+    setAdded(true);
   };
   return (
     <div className="itemDetailContainer">
@@ -38,10 +40,11 @@ const ItemDetail = ({
         )}
         <p className="price">$ {price}</p>
         <div>
-          {false ? (
-            <Link to="/cart" className="Option">
-              Cart
-            </Link>
+          {added ? (<>
+            <Link to="/cart" className="back">
+              Ver carrito
+            </Link> 
+            {cat==='detail' ? <Link to ='/list' className='back'>Seguir comprando</Link> : <Link to ='/promo' className='back'>Seguir comprando</Link>} </>
           ) : (
             <ButtonCount
               onConfirm={handleAdd}
